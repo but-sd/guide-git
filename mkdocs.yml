@@ -1,0 +1,32 @@
+site_name: memo git
+
+nav:
+  - Home: index.md
+  - Les bases: bases.md
+
+theme: 
+  name: material
+  language: fr
+  features:
+    - toc.integrate
+    - navigation.tabs
+    - navigation.expand
+    - navigation.top
+    - content.code.copy
+  plugins:
+    - search:
+        lang: fr
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          # format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed
