@@ -1,18 +1,25 @@
 site_name: memo git
+repo_name: alex1dre-girard/memo-git
 
 nav:
   - Home: index.md
-  - Les bases: bases.md
+  - Configurer git: configurer-git.md
+  - Les commandes git indispensables: bases.md
 
-theme: 
+theme:
   name: material
   language: fr
   features:
-    - toc.integrate
+    # Permet d'afficher le menu de navigation sous forme d'onglets
     - navigation.tabs
-    - navigation.expand
-    - navigation.top
+    # Permet de garder le menu de navigation visible en permanence
+    - navigation.tabs.sticky
+    # Permet d'afficher la table des matières
+    - toc.integrate
+    # Permet d'afficher le bouton pour copier le code
     - content.code.copy
+    # Permet d'afficher un bouton "Retour en haut de la page"
+    - navigation.top
   plugins:
     - search:
         lang: fr

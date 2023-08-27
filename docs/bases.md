@@ -13,16 +13,6 @@ ls -a
 ```
 ![ls -la](images/ls-la.png)
 
-## Les trois états d'un fichier
-
-Un fichier peut être dans trois états différents dans git :
-
-- **untracked**  : le fichier n'est pas dans le dépôt git,
-- **not staged** : le fichier est dans le dépôt git mais n'a pas été modifié depuis le dernier commit
-- **staged** : le fichier est dans le dépôt git et a été modifié depuis le dernier commit
-
-![git status before add](images/git-status-before-add.png)
-
 ## Les trois zones d'un dépôt git
 
 Un dépôt git est composé de trois zones :
@@ -32,6 +22,8 @@ Un dépôt git est composé de trois zones :
 - **l'historique** : c'est la zone qui contient les commits
 
 Lors de l'initialisation d'un dépôt git, le répertoire de travail et l'index sont identiques. Lorsqu'on ajoute un fichier, à l'index, il est copié dans l'index. Lorsqu'on commit, les fichiers de l'index sont copiés dans l'historique.
+
+La **zone d’index**, nommée **staging** en anglais, est une zone temporaire dans laquelle on ajoute les fichiers qui feront partie du prochain instantané. Dans le langage de Git, les instantanés se nomment des **commits**.
 
 ```mermaid
 graph LR
@@ -53,40 +45,47 @@ Pour ajouter tous les fichiers à l'index, il faut exécuter la commande suivant
 git add .
 ```
 
+Pour ajouter certains fichiers à l'index, il faut exécuter la commande suivante :
+```bash
+git add <file1> <file2>
+```
+
+Ou encore avec un joker :
+```bash
+git add *.txt
+```
+
+Ici, on ajoute tous les fichiers avec l'extension .txt à l'index.
+
+
+### Effacer et déplacer des fichiers
+
+Efface le fichier de l'index mais pas du disque
+```bash
+git rm <file>
+```
+
+Efface le fichier de l'index et du disque
+```bash
+git rm -f <file>
+```
+
+Déplace/renomme le fichier dans l'index et sur le disque
+```bash
+git mv <old> <new>
+```
+
+### Afficher l'état des fichiers
+
 Une fois le fichier ajouté à l'index, il est possible de voir son état avec la commande suivante :
 ```bash
 git status
 ```
 
-Les fichiers qui sont dans l'index sont affichés en vert. Les fichiers qui ne sont pas dans l'index sont affichés en rouge. Les fichiers qui ont été modifiés depuis le dernier commit sont affichés en rouge. Les fichiers qui ont été modifiés et ajoutés à l'index sont affichés en vert.
+![git status](images/git-status.png)
 
-### Supprimer un fichier de l'index
-```bash
-git rm <file>
-```
-
-### Supprimer un fichier du disque et de l'index
-```bash
-git rm -f <file>
-```
-
-### Supprimer un fichier du disque mais pas de l'index
-```bash
-git rm --cached <file>
-```
-
-### Renommer un fichier
-```bash
-git mv <old> <new>
-```
-
-### Déplacer un fichier
-```bash
-git mv <old> <new>
-```
 
 ## Travailler avec l'historique
-
 ### Commiter les fichiers de l'index dans l'historique
 
 Pour commiter les fichiers de l'index, il faut exécuter la commande suivante :
@@ -100,13 +99,6 @@ git commit -m "message du commit"
 ```
 
 ### Afficher l'historique des commits
-
-Pour afficher l'historique des commits, il faut exécuter la commande suivante :
-```bash
-git log
-```
-
-## Afficher l'historique des commits
 
 Pour afficher l'historique des commits, il faut exécuter la commande suivante :
 ```bash
@@ -278,4 +270,14 @@ D --> E(Git Pull)
 E --> C
 E --> F(Git Merge)
 F --> D
+```
+
+## Autres commandes utiles
+
+### Déplacer un fichier
+
+Pour déplacer ou renommer un fichier, il faut exécuter la commande suivante :
+
+```bash
+git mv <old> <new>
 ```
