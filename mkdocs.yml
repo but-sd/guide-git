@@ -5,6 +5,9 @@ nav:
   - Home: index.md
   - Configurer git: configurer-git.md
   - Les commandes git indispensables: bases.md
+  - Les branches: branches.md
+  - Git flow: git-flow.md
+  
 
 theme:
   name: material

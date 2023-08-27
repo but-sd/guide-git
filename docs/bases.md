@@ -31,7 +31,7 @@ A[Répertoire de travail] -- git add --> C(Index)
 C -- git commit --> D[Historique]
 ```
 
-## Manipuler les fichiers
+## Manipuler les fichiers de l'index
 
 ### Ajouter des fichiers à l'index
 
@@ -56,7 +56,6 @@ git add *.txt
 ```
 
 Ici, on ajoute tous les fichiers avec l'extension .txt à l'index.
-
 
 ### Effacer et déplacer des fichiers
 
@@ -85,6 +84,25 @@ git status
 ![git status](images/git-status.png)
 
 
+### Afficher les différences entre l'index et le répertoire de travail
+
+Pour afficher les différences entre l'index et le répertoire de travail, il faut exécuter la commande suivante :
+```bash
+git diff
+```
+
+![git diff](images/git-diff-console.png)
+
+Il est possible d'afficher les différences entre l'index et le répertoire de travail pour un fichier en particulier avec la commande suivante :
+```bash
+git diff <file>
+```
+
+Il est possible de voir ces différences directement dans l'ide. Par exemple, avec Visual Studio Code, il faut cliquer sur le fichier dans l'onglet source control.
+
+![git diff](images/git-diff-vscode.png)
+
+
 ## Travailler avec l'historique
 ### Commiter les fichiers de l'index dans l'historique
 
@@ -105,42 +123,43 @@ Pour afficher l'historique des commits, il faut exécuter la commande suivante :
 git log
 ```
 
-## Afficher les différences entre l'index et le répertoire de travail
+Il est possible de filtrer l'historique des commits avec différentes options. 
 
-Pour afficher les différences entre l'index et le répertoire de travail, il faut exécuter la commande suivante :
+Par exemple, pour afficher les 3 derniers commits, on peut exécuter la commande suivante :
 ```bash
-git diff
+git log -n 3
 ```
 
-## Afficher les différences entre l'index et le dernier commit
+![git log -n 3](images/git-log-n-3.png)
+
+Pour afficher les commits d'une période :
+```bash
+git log --since="2022-01-01" --until="2022-12-31"
+```
+
+Pour afficher les commits d'un fichier :
+```bash
+git log -- <file>
+```
+
+Les options de filtrage peuvent être combinées. Par exemple, pour afficher les 3 derniers commits d'un utilisateur sur un fichier :
+```bash
+git log --author="John Doe" -n 3 -- <file>
+```
+
+## Afficher les différences avec l'historique
 
 Pour afficher les différences entre l'index et le dernier commit, il faut exécuter la commande suivante :
 ```bash
 git diff --cached
 ```
 
-## Afficher les différences entre le répertoire de travail et le dernier commit
-
 Pour afficher les différences entre le répertoire de travail et le dernier commit, il faut exécuter la commande suivante :
 ```bash
 git diff HEAD
 ```
 
-## Annuler les modifications d'un fichier de l'index
-
-Pour annuler les modifications d'un fichier de l'index, il faut exécuter la commande suivante :
-```bash
-git reset HEAD <file>
-```
-
-## Annuler les modifications de tous les fichiers de l'index
-
-Pour annuler les modifications de tous les fichiers de l'index, il faut exécuter la commande suivante :
-```bash
-git reset HEAD
-```
-
-### Modifier le dernier commit
+## Modifier le dernier commit
 
 Il est possible de modifier le dernier commit avec la commande suivante :
 ```bash
@@ -156,7 +175,7 @@ Il est possible d'annuler le dernier commit avec la commande suivante :
 git reset --soft HEAD^
 ```
 
-Il est possible d'annuler le dernier commit et de supprimer les fichiers de l'index avec la commande suivante :
+Si l'on souhaite annuler le dernier commit et supprimer les fichiers de l'index, il faut exécuter la commande suivante :
 ```bash
 git reset --hard HEAD^
 ```
@@ -187,33 +206,19 @@ Pour supprimer un commit, il faut supprimer la ligne correspondant au commit.
 
 Pour fusionner deux commits, il faut remplacer le mot pick par squash devant le commit.
 
+Il est possible de fusionner plusieurs commits en ajoutant plusieurs squash devant les commits.
+
+Ces actions peuvent aussi être faite directement dans l'ide, ce qui peut être plus simple. 
+
+Par exemple avec l'extension git lens de Visual Studio Code:
+
+![git rebase -i](images/git-rebase-i-git-lens.png)
+
 ## Annuler un commit publié
 
 Il est possible d'annuler un commit publié avec la commande suivante :
 ```bash
 git revert <commit>
-```
-
-### Afficher l'historique des commits
-
-Pour afficher l'historique des commits, il faut exécuter la commande suivante :
-```bash
-git log
-```
-
-Il possible de filtrer l'historique des commits avec différentes options. Par exemple, pour afficher les 3 derniers commits d'un utilisateur, il faut exécuter la commande suivante :
-```bash
-git log --author="John Doe" -n 3
-```
-
-Pour afficher les commits d'une période, il faut exécuter la commande suivante :
-```bash
-git log --since="2018-01-01" --until="2018-12-31"
-```
-
-Pour afficher les commits d'un fichier, il faut exécuter la commande suivante :
-```bash
-git log -- <file>
 ```
 
 ## Afficher les différences entre deux commits
@@ -234,6 +239,11 @@ Pour identifier l'auteur d'une ligne de code, il faut exécuter la commande suiv
 ```bash
 git blame <file>
 ```
+
+Cela permet de voir qui a modifié une ligne de code et à quel moment. Cela peut être utile pour identifier l'auteur d'un bug.
+Dans Visual Studio Code, il est possible d'afficher les informations de git blame en survolant une ligne de code.
+
+![git blame](images/git-blame.png)
 
 ## Publier vers un dépôt git distant
 
