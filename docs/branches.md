@@ -5,40 +5,30 @@ Les branches constituent un élément central de Git. Elles permettent de travai
 Lors de la création d'une branche, celle-ci est dupliquée à partir de la branche courante. Les modifications apportées à cette branche n'impactent pas les autres branches. Une fois les modifications terminées, il est possible de fusionner la branche avec la branche courante.
 
 ```mermaid
-graph LR
-A[main] --> B(Commit 1) --> C(Commit 2)
-C --> D
-C --> G
-D[branch1] --> E(Commit 3) --> F(Commit 6)
-G[branch2] --> H(Commit 4) --> I(Commit 5)
+gitGraph
+   commit
+   commit
+   branch branch1
+   commit
+   checkout main
+   branch branch2
+   commit
+   commit
+   checkout branch1
+   commit
+   checkout branch2
+   commit
+   commit
+   checkout main
+   merge branch1
+   checkout main
+   merge branch2
+   checkout main
+   commit
+   branch branch3
+   commit
 ```
 
-Dans cet exemple, les branches `branch1` et `branch2` ont été créées à partir de la branche `main` qui contenait à ce moment là 2 commits. 
-
-Les branches ont ensuite évoluées de manière indépendantes. La branche `branch1` a été modifiée avec les commits `Commit 3` et `Commit 6`. La branche `branch2` a été modifiée avec les commits `Commit 4` et `Commit 5`.
-
-
-Une fois les évolutions d'une branche terminées, elles peuvent être fusionnées avec la branche courante.
-
- 
-Dans notre exemple, la branche `branch1` a été fusionnée avec la branche `main`. Les commits `Commit 2` et `Commit 4` ont été ajoutés à la branche `main`. La branche `branch2` n'a pas été fusionnée. Les commits `Commit 3` et `Commit 5` ne sont donc pas présents dans la branche `main`.
-
-```mermaid
-graph LR
-A[main] --> B(Commit 1) --> C(Commit 2)
-C --> G
-C --> E(Commit 3) --> F(Commit 6)
-G[branch2] --> H(Commit 4) --> I(Commit 5)
-```
-
-Si ensuite la branche `branch2` est fusionnée avec la branche `main`, les commits `Commit 3`, `Commit 4` et `Commit 5` seront ajoutés à la branche `main`.
-
-```mermaid
-graph LR
-A[main] --> B(Commit 1) --> C(Commit 2)
-C --> E(Commit 3) --> F(Commit 6)
-F --> H(Commit 4) --> I(Commit 5)
-```
 ## Lister les branches
 
 Pour lister les branches d'un projet, il suffit d'utiliser la commande `git branch`.
@@ -61,8 +51,6 @@ L'option `-a` permet d'afficher toutes les branches du projet, y compris les bra
 git branch -a
 ```
 
-Cette commande affiche la liste des branches du projet, y compris les branches distantes. La branche courante est indiquée par un astérisque.
-
 ```bash
 * main
   branch1
@@ -79,13 +67,30 @@ L'option `-v` permet d'afficher les derniers commits de chaque branche.
 git branch -v
 ```
 
-Cette commande affiche la liste des branches du projet. La branche courante est indiquée par un astérisque.
-
 ```bash
 * main   5f4a4b2 [origin/main] Update readme.md
   branch1 5f4a4b2 Update readme.md
   branch2 5f4a4b2 Update readme.md
 ```
+
+L'option `--list` permet d'afficher les branches qui correspondent à un motif.
+
+```bash
+git branch --list "feat*"
+```
+
+```bash
+  feature1
+  feature2
+```
+
+Enfin, quelques autres options s’avèrent utiles :
+
+- `--contains <commit>` affiche toutes les branches contenant un commit donné,
+- `--no-contains` fait le contraire de la précédente,
+- `--no-merge` affiche les branches qui n’ont pas été mergées avec la branche courante,
+- `--merge` fait le contraire de la précédente.
+
 
 ## Créer une branche
 
@@ -103,6 +108,14 @@ Pour changer de branche, il suffit d'utiliser la commande `git switch` suivie du
 
 ```bash
 git switch branch1
+```
+
+La branch `branch1` doit exister pour pouvoir changer de branche. Elle devient la branche courante. Il est possible de passer l'option `-c` pour créer une nouvelle branche et la définir comme branche courante.
+
+```bash
+  main
+* branch1
+  branch2
 ```
 
 Cette commande permet de passer de la branche `main` à la branche `branch1`. Il est aussi possible d'utiliser le mot clé `checkout` à la place de `switch`. Le mot clé `checkout` est déprécié et sera supprimé dans une prochaine version de Git.
@@ -146,4 +159,4 @@ Cette commande renomme la branche `branch1` en `branch3`. Il n'est pas possible 
 ## Références
 
 - [Git Branches](https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell)
-
+- [Git Branch](https://git-scm.com/docs/git-branch)

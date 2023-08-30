@@ -5,9 +5,11 @@ nav:
   - Home: index.md
   - Configurer git: configurer-git.md
   - Les commandes git indispensables: bases.md
+  - Autres commandes utiles: autres-commandes.md
   - Les branches: branches.md
+  - Bien écrire ses messages de commit: messages-commit.md
+  - Réécrire l'historique: reecrire-historique.md
   - Git flow: git-flow.md
-  
 
 theme:
   name: material

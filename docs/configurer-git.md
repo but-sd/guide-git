@@ -1,13 +1,14 @@
-# Configurer git
-
 ## Installer git
-Pour vérifier si git est installé, il faut exécuter la commande suivante :
+
+Afin de vérifier si git est installé, il faut exécuter la commande suivante :
 ```bash
 git --version
 ```
 
+![git version](images/git-version.png)
+
 Si git est installé, la commande affiche la version de git. Sinon, il faut installer git.
-Pour cela, il suffit de suivre les instructions du site officiel : https://git-scm.com/downloads
+Pour cela, il suffit de suivre les instructions du [site officiel](https://git-scm.com/downloads).
 
 
 ## Configurer son nom et son email
