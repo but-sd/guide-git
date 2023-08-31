@@ -1,5 +1,3 @@
-## Cas d'usage basique de git
-
 Le cas d'usage basique de git est de modifier des fichiers en local, puis de les envoyer vers un dépôt distant. Il est ensuite possible de récupérer les modifications du dépôt distant en local.
 
 Les fichiers sont modifiés en local, puis ajoutés à l'index avec la commande `git add`. Les fichiers de l'index sont commités avec la commande `git commit`. Les commits sont ensuite envoyés vers le dépôt distant avec la commande `git push`. Les commits du dépôt distant sont récupérés avec la commande `git pull`.
@@ -38,7 +36,7 @@ Un dépôt git est composé de trois zones :
 - **l'index** : c'est la zone qui contient les fichiers qui seront commités
 - **l'historique** : c'est la zone qui contient les commits
 
-Lors de l'initialisation d'un dépôt git, le répertoire de travail et l'index sont identiques. Lorsqu'on ajoute un fichier, à l'index, il est copié dans l'index. Lorsqu'on commit, les fichiers de l'index sont copiés dans l'historique.
+Lors de l'initialisation d'un dépôt git, le répertoire de travail et l'index sont identiques. Lorsqu'on **add** un fichier à l'index, il est copié dans celui-ci. Lorsqu'on **commit**, les fichiers de l'index sont copiés dans l'historique.
 
 La **zone d’index**, nommée **staging** en anglais, est une zone temporaire dans laquelle on ajoute les fichiers qui feront partie du prochain instantané. Dans le langage de Git, les instantanés se nomment des **commits**.
 
@@ -48,24 +46,29 @@ A[Répertoire de travail] -- git add --> C(Index)
 C -- git commit --> D[Historique]
 ```
 
+Dans l'ide Visual Studio Code, les zones sont représentées dans l'onglet source control. **Changes** correspond au répertoire de travail, **Staged Changes** correspond à l'index et **Commits** correspond à l'historique.
+
+![Visual Studio Code - Zones](images/visual-studio-zones.png)
+
+
 ## add - Ajouter des fichiers à l'index
 
-Pour ajouter un fichier à l'index, il faut exécuter la commande suivante :
+Ajoute le fichier à l'index
 ```bash
 git add <file>
 ```
 
-Pour ajouter tous les fichiers à l'index, il faut exécuter la commande suivante :
+Ajoute tous les fichiers du répertoire de travail à l'index
 ```bash
 git add .
 ```
 
-Pour ajouter certains fichiers à l'index, il faut exécuter la commande suivante :
+Ajoute plusieurs fichiers à l'index
 ```bash
 git add <file1> <file2>
 ```
 
-Ou encore avec un joker :
+Ajoute tous les fichiers correspondant à un pattern à l'index
 ```bash
 git add *.txt
 ```
@@ -117,17 +120,18 @@ git commit --amend
 
 Cette commande ouvre un éditeur de texte qui permet de modifier le message du dernier commit. En ajoutant des fichiers à l'index avant d'exécuter cette commande, il est possible de modifier le contenu du dernier commit. Cette commande est utile pour corriger un message de commit ou pour ajouter des fichiers oubliés dans le dernier commit.
 
-## clone - Récupérer un dépôt git distant en local
-
-Pour récupérer un dépôt git distant en local, il faut exécuter la commande suivante :
-```bash
-git clone <url>
-```
 ## remote - Publier un dépôt git
 
 Pour publier un dépôt git, il faut exécuter la commande suivante :
 ```bash
 git remote add origin <url>
+```
+
+## clone - Récupérer un dépôt git distant en local
+
+Pour récupérer un dépôt git distant en local, il faut exécuter la commande suivante :
+```bash
+git clone <url>
 ```
 
 ## push - Envoyer les commits vers un dépôt git
