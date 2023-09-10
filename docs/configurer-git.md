@@ -22,6 +22,27 @@ git config --global user.name "John Doe"
 git config --global user.email johndoe@example.com
 ```
 
+## Configurer le proxy
+
+Si vous êtes derrière un proxy, il faut configurer git pour qu'il utilise le proxy. Pour cela, il faut exécuter la commande suivante :
+
+```bash
+git config --global http.proxy http://<proxy>:<port>
+```
+
+Par exemple, si le proxy est
+```bash
+proxy.iutn.univ-poitiers
+```
+et le port
+```bash
+3128
+```
+il faut exécuter la commande suivante :
+```bash
+git config --global http.proxy http://proxy.iutn.univ-poitiers.fr:3128
+```
+
 ## Configurer son éditeur de texte
 Il est possible de configurer son éditeur de texte. Par défaut, git utilise vim. Il est possible de configurer git pour qu'il utilise un autre éditeur de texte. Par exemple, pour utiliser Visual Studio Code, il faut exécuter la commande suivante :
 
