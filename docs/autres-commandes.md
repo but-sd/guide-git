@@ -10,7 +10,7 @@ Dans Visual Studio Code, il est possible d'afficher les informations de git blam
 
 ![git blame](images/git-blame.png)
 
-## chery-pick - Appliquer un commit sur une autre branche
+<!-- ## chery-pick - Appliquer un commit sur une autre branche
 
 La commande `git cherry-pick` permet d'appliquer un commit d'une branche sur une autre branche. Cette commande est utile pour appliquer un commit sur une branche sans fusionner la branche. 
 
@@ -40,7 +40,7 @@ gitGraph
        commit
        checkout develop
        commit
-```
+``` -->
 
 ## diff - Afficher les différences
 
@@ -56,7 +56,7 @@ Il est possible d'afficher les différences entre l'index et le répertoire de t
 git diff <file>
 ```
 
-Il est possible de voir ces différences directement dans l'ide. Par exemple, avec Visual Studio Code, il faut cliquer sur le fichier dans l'onglet source control.
+Il est possible de voir ces différences directement dans l'ide. Par exemple, avec Visual Studio Code, il suffit de cliquer sur le fichier dans l'onglet source control.
 
 ![git diff](images/git-diff-vscode.png)
 

@@ -6,10 +6,12 @@ nav:
   - Configurer git: configurer-git.md
   - Les commandes git indispensables: bases.md
   - Autres commandes utiles: autres-commandes.md
+  - Bien écrire ses messages de commit: messages-commit.md
+  # - Markdown: markdown.md
   # - Les branches: branches.md
-  # - Bien écrire ses messages de commit: messages-commit.md
   # - Réécrire l'historique: reecrire-historique.md
   # - Git flow: git-flow.md
+  # - Exercices: exercices.md
 
 theme:
   name: material
@@ -42,3 +44,6 @@ markdown_extensions:
           class: mermaid
           # format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.tabbed
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg

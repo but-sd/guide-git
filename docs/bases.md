@@ -58,10 +58,25 @@ Ajoute le fichier à l'index
 git add <file>
 ```
 
+Avant l'ajout du fichier à l'index, le fichier n'est pas présent dans l'onglet **Staged Changes** de Visual Studio Code. Il est présent dans l'onglet **Changes**.
+
+![Visual Studio Code - Before add](images/git-add-before.png)
+
+Après l'ajout du fichier à l'index, le fichier est présent dans l'onglet **Staged Changes** de Visual Studio Code. Il n'est plus présent dans l'onglet **Changes**.
+
+![Visual Studio Code - After add](images/git-add-after.png)
+
+Si l'on modifie le fichier index.html, le fichier est présent dans l'onglet **Changes** de Visual Studio Code et que l'on ajoute par exemple le fichier style.css à l'index, les deux fichiers sont présents dans l'onglet **Staged Changes** de Visual Studio Code.
+
+![Visual Studio Code - After add](images/git-add-other-files-before.png)
+
+
 Ajoute tous les fichiers du répertoire de travail à l'index
 ```bash
 git add .
 ```
+
+![Visual Studio Code - Add all](images/git-add-other-files-after.png)
 
 Ajoute plusieurs fichiers à l'index
 ```bash
@@ -79,13 +94,19 @@ Ici, on ajoute tous les fichiers avec l'extension .txt à l'index.
 
 Efface le fichier de l'index mais pas du disque
 ```bash
-git rm <file>
+git rm <file> --cached
 ```
 
-Efface le fichier de l'index et du disque
+![Visual Studio Code - Remove](images/git-remove-before.png)
+
+Dans cet exemple, le fichier `do-not-commit-this-file.txt` a été poussé dans l'index par erreur. Il faut donc l'enlever de l'index. Pour cela, il faut exécuter la commande suivante :
 ```bash
-git rm -f <file>
+git rm do-not-commit-this-file.txt --cached
 ```
+
+Nous verrons un peu plus tard, que si l'on ne souhaite pas qu'un fichier soit versionné, on peut l'ajouter dans le fichier .gitignore.
+
+![Visual Studio Code - Remove](images/git-remove-after.png)
 
 Déplace/renomme le fichier dans l'index et sur le disque
 ```bash
@@ -101,6 +122,17 @@ git status
 
 ![git status](images/git-status.png)
 
+## diff - Afficher les différences entre les fichiers
+
+Il est possible de voir les différences entre les fichiers avec la commande suivante :
+```bash
+git diff
+```
+
+![git diff](images/git-diff-console.png)
+
+![Visual Studio Code - Diff](images/git-diff-vscode.png)
+
 ## commit - Commiter les fichiers de l'index dans l'historique
 
 Pour commiter les fichiers de l'index, il faut exécuter la commande suivante :
@@ -113,6 +145,12 @@ Cette commande ouvre un éditeur de texte pour saisir le message du commit. Il e
 git commit -m "message du commit"
 ```
 
+![Visual Studio Code - Commit](images/git-commit.png)
+
+Une fois le commit effectué, les fichiers de l'index sont copiés dans l'historique. L'index est vidé. Dans l'onglet **Commits** de Visual Studio Code, on peut voir le message du commit et les fichiers qui ont été commités.
+
+![Visual Studio Code - Commit](images/git-commit-after.png)
+
 Il est possible de modifier le dernier commit avec la commande suivante :
 ```bash
 git commit --amend
@@ -120,16 +158,32 @@ git commit --amend
 
 Cette commande ouvre un éditeur de texte qui permet de modifier le message du dernier commit. En ajoutant des fichiers à l'index avant d'exécuter cette commande, il est possible de modifier le contenu du dernier commit. Cette commande est utile pour corriger un message de commit ou pour ajouter des fichiers oubliés dans le dernier commit.
 
+![Visual Studio Code - Commit](images/git-commit-amend.png)
+
+Lorsque l'on commit il est important de respecter certaines règles, voir [Messages de commit](messages-commit.md).
+
+
 ## remote - Publier un dépôt git
 
-Pour publier un dépôt git, il faut exécuter la commande suivante :
+Le travail effectué en local peut être publié sur un dépôt git distant. Il existe plusieurs services qui permettent d'héberger des dépôts git. Les plus connus sont GitHub, GitLab et Bitbucket. Ces services permettent de publier des dépôts git publics ou privés.
+
+Afin de publier un dépôt git, il faut créer un dépôt sur le service d'hébergement. Une fois le dépôt créé, il faut récupérer l'url du dépôt. Il existe deux types d'url : https et ssh. L'url https est plus simple à utiliser car elle ne nécessite pas de configuration particulière. L'url ssh nécessite de configurer une clé ssh sur le service d'hébergement. L'url ssh est plus sécurisée car elle utilise une clé ssh pour s'authentifier. L'url https utilise un nom d'utilisateur et un mot de passe pour s'authentifier.
+
+![GitHub - Create repository](images/github-create-repository.png)
+
+Dans la copie d'écran ci-dessus, une aide est affichée et propose différentes commandes pour publier un dépôt git. Il est possible de publier un dépôt git existant ou de créer un nouveau dépôt git. Dans notre cas, nous allons publier un dépôt git existant. Il faut donc exécuter la commande suivante :
 ```bash
 git remote add origin <url>
-```
+``` 
 
 ## clone - Récupérer un dépôt git distant en local
 
-Pour récupérer un dépôt git distant en local, il faut exécuter la commande suivante :
+Une fois que le dépôt git est publié, il est possible de le récupérer en local. 
+
+![GitHub - Clone repository](images/github-clone-repository.png)
+
+Dans la copie d'écran ci-dessus, une aide est affichée et propose différentes commandes pour récupérer un dépôt git. Il faut donc exécuter la commande suivante :
+
 ```bash
 git clone <url>
 ```
@@ -137,7 +191,7 @@ git clone <url>
 ## push - Envoyer les commits vers un dépôt git
 Pour envoyer les commits vers le dépôt distant, il faut exécuter la commande suivante :
 ```bash
-git push -u origin master
+git push -u origin main
 ```
 
 ## pull - Récupérer les commits du dépôt distant
@@ -146,6 +200,33 @@ Dans le repository local, il est possible de récupérer les commits du dépôt 
 ```bash
 git pull
 ```
+
+## gitignore - Ignorer des fichiers
+
+Il est possible d'ignorer des fichiers avec le fichier .gitignore. Ce fichier contient la liste des fichiers à ignorer. Il est possible d'ignorer des fichiers, des dossiers ou des patterns. Voici un exemple de fichier .gitignore :
+
+```
+# Ignore les fichiers avec l'extension .env
+*.env
+
+# Ignore le dossier node_modules
+node_modules/
+
+# Ignore les fichiers avec l'extension .log dans le dossier logs
+logs/*.log
+```
+
+On ignore les fichiers avec l'extension .env, le dossier node_modules et les fichiers avec l'extension .log dans le dossier logs. Pour un projet node.js, il est conseillé d'ignorer le dossier node_modules. En effet, ce dossier contient les dépendances du projet. Il est inutile de les versionner car elles peuvent être installées avec la commande `npm install`.
+
+## README.md - Documenter un projet
+
+Il est conseillé de documenter un projet avec un fichier README.md. Ce fichier contient la documentation du projet. Il est possible d'utiliser le langage markdown pour mettre en forme le texte. Ce fichier est affiché sur la page d'accueil du dépôt GitHub. Il est donc important de le rédiger pour donner des informations sur le projet.
+
+Pour plus de détail sur la syntaxe markdown, voir [Markdown](markdown.md).
+
+
+
+
 
 
 
