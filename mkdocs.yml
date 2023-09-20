@@ -8,7 +8,7 @@ nav:
   - Autres commandes utiles: autres-commandes.md
   - Bien écrire ses messages de commit: messages-commit.md
   # - Markdown: markdown.md
-  # - Les branches: branches.md
+  - Les branches: branches.md
   # - Réécrire l'historique: reecrire-historique.md
   # - Git flow: git-flow.md
   # - Exercices: exercices.md

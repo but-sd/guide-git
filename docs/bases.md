@@ -221,12 +221,3 @@ On ignore les fichiers avec l'extension .env, le dossier node_modules et les fic
 ## README.md - Documenter un projet
 
 Il est conseillé de documenter un projet avec un fichier README.md. Ce fichier contient la documentation du projet. Il est possible d'utiliser le langage markdown pour mettre en forme le texte. Ce fichier est affiché sur la page d'accueil du dépôt GitHub. Il est donc important de le rédiger pour donner des informations sur le projet.
-
-Pour plus de détail sur la syntaxe markdown, voir [Markdown](markdown.md).
-
-
-
-
-
-
-
