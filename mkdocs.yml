@@ -10,7 +10,7 @@ nav:
   # - Markdown: markdown.md
   - Les branches: branches.md
   # - Réécrire l'historique: reecrire-historique.md
-  # - Git flow: git-flow.md
+  - Git flow: git-flow.md
   # - Exercices: exercices.md
 
 theme:
