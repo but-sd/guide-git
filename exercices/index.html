@@ -1,0 +1,787 @@
+
+<!doctype html>
+<html lang="fr" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.7">
+    
+    
+      
+        <title>Exercices - guide git</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.4b4a2bd9.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#exercices" class="md-skip">
+          Aller au contenu
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="En-tête">
+    <a href=".." title="guide git" class="md-header__button md-logo" aria-label="guide git" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            guide git
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Exercices
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Rechercher" placeholder="Rechercher" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Recherche">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Effacer" aria-label="Effacer" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initialisation de la recherche
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Onglets" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../configurer-git/" class="md-tabs__link">
+        
+  
+    
+  
+  Configurer git
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../bases/" class="md-tabs__link">
+        
+  
+    
+  
+  Les commandes git indispensables
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../autres-commandes/" class="md-tabs__link">
+        
+  
+    
+  
+  Autres commandes utiles
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../messages-commit/" class="md-tabs__link">
+        
+  
+    
+  
+  Bien écrire ses messages de commit
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../branches/" class="md-tabs__link">
+        
+  
+    
+  
+  Les branches
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../git-flow/" class="md-tabs__link">
+        
+  
+    
+  
+  Git flow
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="guide git" class="md-nav__button md-logo" aria-label="guide git" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    guide git
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configurer-git/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configurer git
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bases/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Les commandes git indispensables
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../autres-commandes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Autres commandes utiles
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../messages-commit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bien écrire ses messages de commit
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../branches/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Les branches
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../git-flow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Git flow
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="exercices">Exercices</h1>
+<h2 id="lessentiel">L'essentiel</h2>
+<h3 id="mettre-en-place-un-projet-git">Mettre en place un projet git</h3>
+<ol>
+<li>Créer un nouveau projet</li>
+<li>Initialiser le projet avec git</li>
+<li>Créer un fichier <code>index.html</code></li>
+<li>Ajouter le fichier à l'index</li>
+<li>Commiter le fichier avec le message <code>Add index.html</code></li>
+<li>Modifier le fichier <code>index.html</code></li>
+<li>Ajouter le fichier à l'index</li>
+<li>Commiter le fichier avec le message <code>Update index.html</code></li>
+<li>Modifier le fichier <code>index.html</code></li>
+<li>Ajouter le fichier à l'index</li>
+<li>Commiter le fichier avec le message <code>Update index.html</code></li>
+<li>Afficher l'historique des commits</li>
+</ol>
+<p><strong>Solution</strong></p>
+<details>
+<summary>Cliquez ici pour voir la solution</summary>
+
+1. Créer un nouveau projet
+
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>mkdir<span class="w"> </span>git-commit
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">cd</span><span class="w"> </span>git-commit
+</span></code></pre></div>
+
+2. Initialiser le projet avec git
+
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>git<span class="w"> </span>init
+</span></code></pre></div>
+
+3. Créer un fichier `index.html`
+
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&lt;h1&gt;Hello World&lt;/h1&gt;&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>index.html
+</span></code></pre></div>
+
+4. Ajouter le fichier à l'index
+
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>git<span class="w"> </span>add<span class="w"> </span>index.html
+</span></code></pre></div>
+
+5. Commiter le fichier avec le message `Add index.html`
+
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Add index.html&quot;</span>
+</span></code></pre></div>
+
+6. Modifier le fichier `index.html`
+
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&lt;h1&gt;Hello World !&lt;/h1&gt;&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>index.html
+</span></code></pre></div>
+
+7. Ajouter le fichier à l'index
+
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>git<span class="w"> </span>add<span class="w"> </span>index.html
+</span></code></pre></div>
+
+8. Commiter le fichier avec le message `Update index.html`
+
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Update index.html&quot;</span>
+</span></code></pre></div>
+
+9. Modifier le fichier `index.html`
+
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&lt;h1&gt;Hello World !&lt;/h1&gt;&lt;p&gt;This is a new paragraph&lt;/p&gt;&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>index.html
+</span></code></pre></div>
+
+10. Ajouter le fichier à l'index
+
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>git<span class="w"> </span>add<span class="w"> </span>index.html
+</span></code></pre></div>
+
+11. Commiter le fichier avec le message `Update index.html`
+
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Update index.html&quot;</span>
+</span></code></pre></div>
+
+12. Afficher l'historique des commits
+
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>git<span class="w"> </span>log
+</span></code></pre></div>
+
+</details>
+
+<h3 id="comparer-les-fichiers">Comparer les fichiers</h3>
+<ol>
+<li>Comparer le fichier <code>index.html</code> avec le dernier commit</li>
+<li>Comparer le fichier <code>index.html</code> avec le commit précédent</li>
+<li>Comparer le fichier <code>index.html</code> avec le commit précédent du commit précédent</li>
+<li>Comparer le fichier <code>index.html</code> avec le premier commit</li>
+<li>Comparer le fichier <code>index.html</code> avec un commit précis</li>
+</ol>
+<p><strong>Solution</strong></p>
+<details>
+
+<summary>Cliquez ici pour voir la solution</summary>
+
+1. Comparer le fichier `index.html` avec le dernier commit
+
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>git<span class="w"> </span>diff<span class="w"> </span>HEAD<span class="w"> </span>index.html
+</span></code></pre></div>
+
+2. Comparer le fichier `index.html` avec le commit précédent
+
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>git<span class="w"> </span>diff<span class="w"> </span>HEAD^<span class="w"> </span>index.html
+</span></code></pre></div>
+
+3. Comparer le fichier `index.html` avec le commit précédent du commit précédent
+
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>git<span class="w"> </span>diff<span class="w"> </span>HEAD^^<span class="w"> </span>index.html
+</span></code></pre></div>
+
+4. Comparer le fichier `index.html` avec le premier commit
+
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>git<span class="w"> </span>diff<span class="w"> </span>HEAD~3<span class="w"> </span>index.html
+</span></code></pre></div>
+
+5. Comparer le fichier `index.html` avec un commit précis
+
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>git<span class="w"> </span>diff<span class="w"> </span>5f4a4b2<span class="w"> </span>index.html
+</span></code></pre></div>
+
+</details>
+
+<h3 id="annuler-un-commit">Annuler un commit</h3>
+<ol>
+<li>Annuler le dernier commit</li>
+<li>Annuler le dernier commit et supprimer les fichiers de l'index</li>
+<li>Annuler le dernier commit et modifier le message du commit</li>
+</ol>
+<p><strong>Solution</strong></p>
+<details>
+
+<summary>Cliquez ici pour voir la solution</summary>
+
+1. Annuler le dernier commit
+
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>git<span class="w"> </span>reset<span class="w"> </span>--soft<span class="w"> </span>HEAD^
+</span></code></pre></div>
+
+2. Annuler le dernier commit et supprimer les fichiers de l'index
+
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>git<span class="w"> </span>reset<span class="w"> </span>--hard<span class="w"> </span>HEAD^
+</span></code></pre></div>
+
+4. Annuler le dernier commit et modifier le message du commit
+
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>git<span class="w"> </span>commit<span class="w"> </span>--amend
+</span></code></pre></div>
+
+</details>
+
+<h3 id="mettre-de-cote-des-modifications">Mettre de côté des modifications</h3>
+<ol>
+<li>Créer un fichier <code>other-file.html</code></li>
+<li>Ajouter le fichier à l'index</li>
+<li>Mettre de côté les modifications en cours, en ajoutant un message</li>
+<li>Modifier le fichier <code>index.html</code></li>
+<li>Ajouter le fichier à l'index</li>
+<li>Commiter le fichier avec le message <code>Update index.html</code></li>
+<li>Afficher la liste des modifications mises de côté</li>
+<li>Appliquer les modifications mises de côté</li>
+<li>Supprimer les modifications mises de côté</li>
+</ol>
+<p><strong>Solution</strong></p>
+<details>
+
+<summary>Cliquez ici pour voir la solution</summary>
+
+1. Créer un fichier `other-file.html`
+
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&lt;h1&gt;Other file&lt;/h1&gt;&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>other-file.html
+</span></code></pre></div>
+
+2. Ajouter le fichier à l'index
+
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>git<span class="w"> </span>add<span class="w"> </span>other-file.html
+</span></code></pre></div>
+
+3. Mettre de côté les modifications en cours, en ajoutant un message
+
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>git<span class="w"> </span>stash<span class="w"> </span>save<span class="w"> </span><span class="s2">&quot;Add other-file.html&quot;</span>
+</span></code></pre></div>
+
+4. Modifier le fichier `index.html`
+
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&lt;h1&gt;Hello World !&lt;/h1&gt;&lt;p&gt;This is a new paragraph&lt;/p&gt;&lt;p&gt;This is another paragraph&lt;/p&gt;&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>index.html
+</span></code></pre></div>
+
+5. Ajouter le fichier à l'index
+
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>git<span class="w"> </span>add<span class="w"> </span>index.html
+</span></code></pre></div>
+
+6. Commiter le fichier avec le message `Update index.html`
+
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Update index.html&quot;</span>
+</span></code></pre></div>
+
+7. Afficher la liste des modifications mises de côté
+
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>git<span class="w"> </span>stash<span class="w"> </span>list
+</span></code></pre></div>
+
+8. Appliquer les modifications mises de côté
+
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>git<span class="w"> </span>stash<span class="w"> </span>apply
+</span></code></pre></div>
+
+9. Supprimer les modifications mises de côté
+
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>git<span class="w"> </span>stash<span class="w"> </span>drop
+</span></code></pre></div>
+
+</details>
+
+<h3 id="publier-un-projet-sur-github">Publier un projet sur GitHub</h3>
+<ol>
+<li>Créer un nouveau projet sur GitHub</li>
+<li>Ajouter le projet local comme remote</li>
+<li>Publier le projet local sur GitHub</li>
+</ol>
+<p><strong>Solution</strong></p>
+<details>
+
+<summary>Cliquez ici pour voir la solution</summary>
+
+1. Créer un nouveau projet sur GitHub
+
+<div class="language-text highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>Aller sur https://github.com et créer un nouveau projet.
+</span></code></pre></div>
+
+2. Ajouter le projet local comme remote
+
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>origin<span class="w"> </span>&lt;url&gt;
+</span></code></pre></div>
+
+3. Publier le projet local sur GitHub
+
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>main
+</span></code></pre></div>
+
+</details>
+
+<h3 id="recuperer-un-projet-depuis-github">Récupérer un projet depuis GitHub</h3>
+<ol>
+<li>Récupérer un projet depuis GitHub</li>
+</ol>
+<p><strong>Solution</strong></p>
+<details>
+
+<summary>Cliquez ici pour voir la solution</summary>
+
+1. Récupérer un projet depuis GitHub
+
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>git<span class="w"> </span>clone<span class="w"> </span>&lt;url&gt;
+</span></code></pre></div>
+
+</details>
+
+<h2 id="les-branches">Les branches</h2>
+<h3 id="creer-une-branche">Créer une branche</h3>
+<ol>
+<li>Créer une branche <code>branch1</code></li>
+<li>Faire un commit sur la branche <code>branch1</code></li>
+<li>Créer une branche <code>branch2</code> à partir de la branche principale</li>
+<li>Faire un commit sur la branche <code>branch2</code></li>
+<li>Créer une branche <code>branch3</code> à partir de la branche <code>branch1</code></li>
+<li>Faire un commit sur la branche <code>branch3</code></li>
+<li>Afficher la liste des branches</li>
+<li>Afficher l'historique des commits</li>
+</ol>
+<p><strong>Solution</strong></p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Retour en haut de la page
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "toc.integrate", "content.code.copy", "navigation.top"], "search": "../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.aecac24b.min.js"></script>
+      
+    
+  </body>
+</html>

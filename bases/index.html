@@ -1,0 +1,773 @@
+
+<!doctype html>
+<html lang="fr" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../configurer-git/">
+      
+      
+        <link rel="next" href="../autres-commandes/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.7">
+    
+    
+      
+        <title>Les commandes git indispensables - guide git</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.4b4a2bd9.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#init-initialiser-un-depot-git" class="md-skip">
+          Aller au contenu
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="En-tête">
+    <a href=".." title="guide git" class="md-header__button md-logo" aria-label="guide git" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            guide git
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Les commandes git indispensables
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Rechercher" placeholder="Rechercher" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Recherche">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Effacer" aria-label="Effacer" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initialisation de la recherche
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Onglets" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../configurer-git/" class="md-tabs__link">
+        
+  
+    
+  
+  Configurer git
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+    
+  
+  Les commandes git indispensables
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../autres-commandes/" class="md-tabs__link">
+        
+  
+    
+  
+  Autres commandes utiles
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../messages-commit/" class="md-tabs__link">
+        
+  
+    
+  
+  Bien écrire ses messages de commit
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../branches/" class="md-tabs__link">
+        
+  
+    
+  
+  Les branches
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../git-flow/" class="md-tabs__link">
+        
+  
+    
+  
+  Git flow
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="guide git" class="md-nav__button md-logo" aria-label="guide git" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    guide git
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configurer-git/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configurer git
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Les commandes git indispensables
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Les commandes git indispensables
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#init-initialiser-un-depot-git" class="md-nav__link">
+    init - Initialiser un dépôt git
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-ajouter-des-fichiers-a-lindex" class="md-nav__link">
+    add - Ajouter des fichiers à l'index
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rm-supprimer-des-fichiers-de-lindex" class="md-nav__link">
+    rm - Supprimer des fichiers de l'index
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#status-afficher-letat-des-fichiers" class="md-nav__link">
+    status - Afficher l'état des fichiers
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#diff-afficher-les-differences-entre-les-fichiers" class="md-nav__link">
+    diff - Afficher les différences entre les fichiers
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#commit-commiter-les-fichiers-de-lindex-dans-lhistorique" class="md-nav__link">
+    commit - Commiter les fichiers de l'index dans l'historique
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#remote-publier-un-depot-git" class="md-nav__link">
+    remote - Publier un dépôt git
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clone-recuperer-un-depot-git-distant-en-local" class="md-nav__link">
+    clone - Récupérer un dépôt git distant en local
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#push-envoyer-les-commits-vers-un-depot-git" class="md-nav__link">
+    push - Envoyer les commits vers un dépôt git
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pull-recuperer-les-commits-du-depot-distant" class="md-nav__link">
+    pull - Récupérer les commits du dépôt distant
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gitignore-ignorer-des-fichiers" class="md-nav__link">
+    gitignore - Ignorer des fichiers
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#readmemd-documenter-un-projet" class="md-nav__link">
+    README.md - Documenter un projet
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../autres-commandes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Autres commandes utiles
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../messages-commit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bien écrire ses messages de commit
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../branches/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Les branches
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../git-flow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Git flow
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  <h1>Les commandes git indispensables</h1>
+
+<p>Le cas d'usage basique de git est de modifier des fichiers en local, puis de les envoyer vers un dépôt distant. Il est ensuite possible de récupérer les modifications du dépôt distant en local.</p>
+<p>Les fichiers sont modifiés en local, puis ajoutés à l'index avec la commande <code>git add</code>. Les fichiers de l'index sont commités avec la commande <code>git commit</code>. Les commits sont ensuite envoyés vers le dépôt distant avec la commande <code>git push</code>. Les commits du dépôt distant sont récupérés avec la commande <code>git pull</code>.</p>
+<pre class="mermaid"><code>graph LR
+A[Working Directory] --&gt; B(Git Add)
+B --&gt; C(Git Commit)
+C --&gt; D(Git Push)
+D --&gt; E(Git Pull)
+E --&gt; C
+
+style A fill:#0394fc
+style B fill:#0394fc
+style C fill:#0394fc
+style D fill:#ece6f0
+style E fill:#ece6f0</code></pre>
+<h2 id="init-initialiser-un-depot-git">init - Initialiser un dépôt git</h2>
+<p>Afin d'initialiser un dépôt git, il faut se placer dans le répertoire de travail et exécuter la commande suivante :
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>git<span class="w"> </span>init
+</span></code></pre></div></p>
+<p>Cela crée un dossier .git qui contient les informations de versionnage. Il est possible de voir ce dossier en affichant les fichiers cachés. Par exemple, sous Linux ou avec git-bash, il faut exécuter la commande suivante :
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>ls<span class="w"> </span>-a
+</span></code></pre></div>
+<img alt="ls -la" src="../images/ls-la.png" /></p>
+<p>Un dépôt git est composé de trois zones :</p>
+<ul>
+<li><strong>le répertoire de travail</strong> : c'est le dossier qui contient les fichiers du projet</li>
+<li><strong>l'index</strong> : c'est la zone qui contient les fichiers qui seront commités</li>
+<li><strong>l'historique</strong> : c'est la zone qui contient les commits</li>
+</ul>
+<p>Lors de l'initialisation d'un dépôt git, le répertoire de travail et l'index sont identiques. Lorsqu'on <strong>add</strong> un fichier à l'index, il est copié dans celui-ci. Lorsqu'on <strong>commit</strong>, les fichiers de l'index sont copiés dans l'historique.</p>
+<p>La <strong>zone d’index</strong>, nommée <strong>staging</strong> en anglais, est une zone temporaire dans laquelle on ajoute les fichiers qui feront partie du prochain instantané. Dans le langage de Git, les instantanés se nomment des <strong>commits</strong>.</p>
+<pre class="mermaid"><code>graph LR
+A[Répertoire de travail] -- git add --&gt; C(Index)
+C -- git commit --&gt; D[Historique]</code></pre>
+<p>Dans l'ide Visual Studio Code, les zones sont représentées dans l'onglet source control. <strong>Changes</strong> correspond au répertoire de travail, <strong>Staged Changes</strong> correspond à l'index et <strong>Commits</strong> correspond à l'historique.</p>
+<p><img alt="Visual Studio Code - Zones" src="../images/visual-studio-zones.png" /></p>
+<h2 id="add-ajouter-des-fichiers-a-lindex">add - Ajouter des fichiers à l'index</h2>
+<p>Ajoute le fichier à l'index
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>git<span class="w"> </span>add<span class="w"> </span>&lt;file&gt;
+</span></code></pre></div></p>
+<p>Avant l'ajout du fichier à l'index, le fichier n'est pas présent dans l'onglet <strong>Staged Changes</strong> de Visual Studio Code. Il est présent dans l'onglet <strong>Changes</strong>.</p>
+<p><img alt="Visual Studio Code - Before add" src="../images/git-add-before.png" /></p>
+<p>Après l'ajout du fichier à l'index, le fichier est présent dans l'onglet <strong>Staged Changes</strong> de Visual Studio Code. Il n'est plus présent dans l'onglet <strong>Changes</strong>.</p>
+<p><img alt="Visual Studio Code - After add" src="../images/git-add-after.png" /></p>
+<p>Si l'on modifie le fichier index.html, le fichier est présent dans l'onglet <strong>Changes</strong> de Visual Studio Code et que l'on ajoute par exemple le fichier style.css à l'index, les deux fichiers sont présents dans l'onglet <strong>Staged Changes</strong> de Visual Studio Code.</p>
+<p><img alt="Visual Studio Code - After add" src="../images/git-add-other-files-before.png" /></p>
+<p>Ajoute tous les fichiers du répertoire de travail à l'index
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>git<span class="w"> </span>add<span class="w"> </span>.
+</span></code></pre></div></p>
+<p><img alt="Visual Studio Code - Add all" src="../images/git-add-other-files-after.png" /></p>
+<p>Ajoute plusieurs fichiers à l'index
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>git<span class="w"> </span>add<span class="w"> </span>&lt;file1&gt;<span class="w"> </span>&lt;file2&gt;
+</span></code></pre></div></p>
+<p>Ajoute tous les fichiers correspondant à un pattern à l'index
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>git<span class="w"> </span>add<span class="w"> </span>*.txt
+</span></code></pre></div></p>
+<p>Ici, on ajoute tous les fichiers avec l'extension .txt à l'index.</p>
+<h2 id="rm-supprimer-des-fichiers-de-lindex">rm - Supprimer des fichiers de l'index</h2>
+<p>Efface le fichier de l'index mais pas du disque
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>git<span class="w"> </span>rm<span class="w"> </span>&lt;file&gt;<span class="w"> </span>--cached
+</span></code></pre></div></p>
+<p><img alt="Visual Studio Code - Remove" src="../images/git-remove-before.png" /></p>
+<p>Dans cet exemple, le fichier <code>do-not-commit-this-file.txt</code> a été poussé dans l'index par erreur. Il faut donc l'enlever de l'index. Pour cela, il faut exécuter la commande suivante :
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>git<span class="w"> </span>rm<span class="w"> </span><span class="k">do</span>-not-commit-this-file.txt<span class="w"> </span>--cached
+</span></code></pre></div></p>
+<p>Nous verrons un peu plus tard, que si l'on ne souhaite pas qu'un fichier soit versionné, on peut l'ajouter dans le fichier .gitignore.</p>
+<p><img alt="Visual Studio Code - Remove" src="../images/git-remove-after.png" /></p>
+<p>Déplace/renomme le fichier dans l'index et sur le disque
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>git<span class="w"> </span>mv<span class="w"> </span>&lt;old&gt;<span class="w"> </span>&lt;new&gt;
+</span></code></pre></div></p>
+<h2 id="status-afficher-letat-des-fichiers">status - Afficher l'état des fichiers</h2>
+<p>Une fois le fichier ajouté à l'index, il est possible de voir son état avec la commande suivante :
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>git<span class="w"> </span>status
+</span></code></pre></div></p>
+<p><img alt="git status" src="../images/git-status.png" /></p>
+<h2 id="diff-afficher-les-differences-entre-les-fichiers">diff - Afficher les différences entre les fichiers</h2>
+<p>Il est possible de voir les différences entre les fichiers avec la commande suivante :
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>git<span class="w"> </span>diff
+</span></code></pre></div></p>
+<p><img alt="git diff" src="../images/git-diff-console.png" /></p>
+<p><img alt="Visual Studio Code - Diff" src="../images/git-diff-vscode.png" /></p>
+<h2 id="commit-commiter-les-fichiers-de-lindex-dans-lhistorique">commit - Commiter les fichiers de l'index dans l'historique</h2>
+<p>Pour commiter les fichiers de l'index, il faut exécuter la commande suivante :
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>git<span class="w"> </span>commit
+</span></code></pre></div></p>
+<p>Cette commande ouvre un éditeur de texte pour saisir le message du commit. Il est possible de saisir le message du commit directement dans la ligne de commande avec la commande suivante :
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;message du commit&quot;</span>
+</span></code></pre></div></p>
+<p><img alt="Visual Studio Code - Commit" src="../images/git-commit.png" /></p>
+<p>Une fois le commit effectué, les fichiers de l'index sont copiés dans l'historique. L'index est vidé. Dans l'onglet <strong>Commits</strong> de Visual Studio Code, on peut voir le message du commit et les fichiers qui ont été commités.</p>
+<p><img alt="Visual Studio Code - Commit" src="../images/git-commit-after.png" /></p>
+<p>Il est possible de modifier le dernier commit avec la commande suivante :
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>git<span class="w"> </span>commit<span class="w"> </span>--amend
+</span></code></pre></div></p>
+<p>Cette commande ouvre un éditeur de texte qui permet de modifier le message du dernier commit. En ajoutant des fichiers à l'index avant d'exécuter cette commande, il est possible de modifier le contenu du dernier commit. Cette commande est utile pour corriger un message de commit ou pour ajouter des fichiers oubliés dans le dernier commit.</p>
+<p><img alt="Visual Studio Code - Commit" src="../images/git-commit-amend.png" /></p>
+<p>Lorsque l'on commit il est important de respecter certaines règles, voir <a href="../messages-commit/">Messages de commit</a>.</p>
+<h2 id="remote-publier-un-depot-git">remote - Publier un dépôt git</h2>
+<p>Le travail effectué en local peut être publié sur un dépôt git distant. Il existe plusieurs services qui permettent d'héberger des dépôts git. Les plus connus sont GitHub, GitLab et Bitbucket. Ces services permettent de publier des dépôts git publics ou privés.</p>
+<p>Afin de publier un dépôt git, il faut créer un dépôt sur le service d'hébergement. Une fois le dépôt créé, il faut récupérer l'url du dépôt. Il existe deux types d'url : https et ssh. L'url https est plus simple à utiliser car elle ne nécessite pas de configuration particulière. L'url ssh nécessite de configurer une clé ssh sur le service d'hébergement. L'url ssh est plus sécurisée car elle utilise une clé ssh pour s'authentifier. L'url https utilise un nom d'utilisateur et un mot de passe pour s'authentifier.</p>
+<p><img alt="GitHub - Create repository" src="../images/github-create-repository.png" /></p>
+<p>Dans la copie d'écran ci-dessus, une aide est affichée et propose différentes commandes pour publier un dépôt git. Il est possible de publier un dépôt git existant ou de créer un nouveau dépôt git. Dans notre cas, nous allons publier un dépôt git existant. Il faut donc exécuter la commande suivante :
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>origin<span class="w"> </span>&lt;url&gt;
+</span></code></pre></div></p>
+<h2 id="clone-recuperer-un-depot-git-distant-en-local">clone - Récupérer un dépôt git distant en local</h2>
+<p>Une fois que le dépôt git est publié, il est possible de le récupérer en local. </p>
+<p><img alt="GitHub - Clone repository" src="../images/github-clone-repository.png" /></p>
+<p>Dans la copie d'écran ci-dessus, une aide est affichée et propose différentes commandes pour récupérer un dépôt git. Il faut donc exécuter la commande suivante :</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>git<span class="w"> </span>clone<span class="w"> </span>&lt;url&gt;
+</span></code></pre></div>
+<h2 id="push-envoyer-les-commits-vers-un-depot-git">push - Envoyer les commits vers un dépôt git</h2>
+<p>Pour envoyer les commits vers le dépôt distant, il faut exécuter la commande suivante :
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>main
+</span></code></pre></div></p>
+<h2 id="pull-recuperer-les-commits-du-depot-distant">pull - Récupérer les commits du dépôt distant</h2>
+<p>Dans le repository local, il est possible de récupérer les commits du dépôt distant avec la commande suivante :
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>git<span class="w"> </span>pull
+</span></code></pre></div></p>
+<h2 id="gitignore-ignorer-des-fichiers">gitignore - Ignorer des fichiers</h2>
+<p>Il est possible d'ignorer des fichiers avec le fichier .gitignore. Ce fichier contient la liste des fichiers à ignorer. Il est possible d'ignorer des fichiers, des dossiers ou des patterns. Voici un exemple de fichier .gitignore :</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a># Ignore les fichiers avec l&#39;extension .env
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>*.env
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a># Ignore le dossier node_modules
+</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>node_modules/
+</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>
+</span><span id="__span-18-7"><a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a># Ignore les fichiers avec l&#39;extension .log dans le dossier logs
+</span><span id="__span-18-8"><a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a>logs/*.log
+</span></code></pre></div>
+<p>On ignore les fichiers avec l'extension .env, le dossier node_modules et les fichiers avec l'extension .log dans le dossier logs. Pour un projet node.js, il est conseillé d'ignorer le dossier node_modules. En effet, ce dossier contient les dépendances du projet. Il est inutile de les versionner car elles peuvent être installées avec la commande <code>npm install</code>.</p>
+<h2 id="readmemd-documenter-un-projet">README.md - Documenter un projet</h2>
+<p>Il est conseillé de documenter un projet avec un fichier README.md. Ce fichier contient la documentation du projet. Il est possible d'utiliser le langage markdown pour mettre en forme le texte. Ce fichier est affiché sur la page d'accueil du dépôt GitHub. Il est donc important de le rédiger pour donner des informations sur le projet.</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Retour en haut de la page
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "toc.integrate", "content.code.copy", "navigation.top"], "search": "../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.aecac24b.min.js"></script>
+      
+    
+  </body>
+</html>
